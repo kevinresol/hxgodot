@@ -36,7 +36,7 @@ class ClassGenMacros {
     static var logBuf = new StringBuf();
 
     public static function api() {
-        var use64 = Context.defined("HXCPP_M64");
+        var use64 = Context.defined("HXCPP_M64") || Context.defined("HXCPP_ARM64");
         var useDouble = false; // TODO: Support double Godot builds
         var sizeKey = '${useDouble ? "double" : "float"}_${use64 ? "64" : "32"}';
         var hl = haxe.Json.parse(sys.io.File.getContent("./haxelib.json"));

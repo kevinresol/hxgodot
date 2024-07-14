@@ -13,7 +13,7 @@ import haxe.macro.ComplexTypeTools;
 using haxe.macro.ExprTools;
 
 class ArgumentMacros {
-    static var ptrSize = Context.defined("HXCPP_M64") ? "int64_t" : "int32_t";
+    static var ptrSize = Context.defined("HXCPP_M64") || Context.defined("HXCPP_ARM64") ? "int64_t" : "int32_t";
     static var ptrSizeOf = Context.parse('untyped __cpp__("sizeof($ptrSize)")', Context.currentPos());
 
     public static function inbound(_index:Int, _args:String, _type:haxe.macro.ComplexType) {
